@@ -27,9 +27,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Script Include="Imputation.script" />
+    <Script Include="LinearRegression.script" />
     <Script Include="TransformToBinaryML.script" />
     <ScriptCode Include="Imputation.script.cs">
       <DependentUpon>Imputation.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="LinearRegression.script.cs">
+      <DependentUpon>LinearRegression.script</DependentUpon>
     </ScriptCode>
     <ScriptCode Include="TransformToBinaryML.script.cs">
       <DependentUpon>TransformToBinaryML.script</DependentUpon>

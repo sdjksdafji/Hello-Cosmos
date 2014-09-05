@@ -1,0 +1,28 @@
+﻿MODULE Scope.App.ScopeML;
+  
+#DECLARE training string = @"local/shuywang/test/training.ss";
+#DECLARE mapping string =  @"local/shuywang/test/map.ss";
+#DECLARE stat string = @"local/shuywang/test/data.stat";
+#DECLARE metricsPath string = @"local/shuywang/test/outputLR.txt";
+ 
+Input = SSTREAM @training; 
+Mapping = SSTREAM @mapping;
+ 
+//Split the data into two partitions: training data and testing data.
+ 
+p = ScopeML.SplitDataTo2Partitions(Data = Input, SplitPercentage = "80|20"); 
+
+model = ScopeML.LinearModel(Data = p.First,
+                        Mapping = Mapping,
+                        Stat = @stat,
+                        LearningParameter = "M=10;CL1=0;CL2=1",
+                        WithHint = false,
+                        Algo = "lr");
+
+
+//predict values against test data and obtain metrics  
+Predict = ScopeML.LinearModelPrediction(TestingData = p.Second, LinearModel = model.Model, Algo = "lr");
+ 
+Metrics = ScopeML.CalculateBinaryClassificationMetric(PredictionResults = Predict.PredictionResults);
+ 
+OUTPUT Metrics.Metrics TO @metricsPath;

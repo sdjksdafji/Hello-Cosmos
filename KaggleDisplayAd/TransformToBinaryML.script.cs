@@ -32,7 +32,7 @@ public class DisplayAdDataExtractor : Extractor {
                     {
                         if (i >= 2 && i <= 14)
                         {
-                            output[i].Set(mean[i - 1]);
+                            output[i].Set(mean[i - 1].Trim());
                         }
                         else
                         {
