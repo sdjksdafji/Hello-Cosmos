@@ -31,7 +31,93 @@ dataI1 =
     WHERE input.I1 != "";
 
 avgI1 = 
-    SELECT (Convert.ToInt64(dataI1.I1)) AS I1_AVG
+    SELECT AVG(Convert.ToInt64(dataI1.I1)) AS I1_AVG
     FROM dataI1;
 
 OUTPUT avgI1 TO @"local/shuywang/test/imputation.txt";
+
+
+
+//> for(i in 16:41){
+//+ 	col = training[,i];
+//+ 	print(i-15);
+//+ 	print(summary(levels(col)));
+//+ }
+//[1] 1
+//   Length     Class      Mode 
+//     1460 character character 
+//[1] 2
+//   Length     Class      Mode 
+//      583 character character 
+//[1] 3
+//   Length     Class      Mode 
+// 10131227 character character 
+//[1] 4
+//   Length     Class      Mode 
+//  2202608 character character 
+//[1] 5
+//   Length     Class      Mode 
+//      305 character character 
+//[1] 6
+//   Length     Class      Mode 
+//       24 character character 
+//[1] 7
+//   Length     Class      Mode 
+//    12517 character character 
+//[1] 8
+//   Length     Class      Mode 
+//      633 character character 
+//[1] 9
+//   Length     Class      Mode 
+//        3 character character 
+//[1] 10
+//   Length     Class      Mode 
+//    93145 character character 
+//[1] 11
+//   Length     Class      Mode 
+//     5683 character character 
+//[1] 12
+//   Length     Class      Mode 
+//  8351593 character character 
+//[1] 13
+//   Length     Class      Mode 
+//     3194 character character 
+//[1] 14
+//   Length     Class      Mode 
+//       27 character character 
+//[1] 15
+//   Length     Class      Mode 
+//    14992 character character 
+//[1] 16
+//   Length     Class      Mode 
+//  5461306 character character 
+//[1] 17
+//   Length     Class      Mode 
+//       10 character character 
+//[1] 18
+//   Length     Class      Mode 
+//     5652 character character 
+//[1] 19
+//   Length     Class      Mode 
+//     2173 character character 
+//[1] 20
+//   Length     Class      Mode 
+//        4 character character 
+//[1] 21
+//   Length     Class      Mode 
+//  7046547 character character 
+//[1] 22
+//   Length     Class      Mode 
+//       18 character character 
+//[1] 23
+//   Length     Class      Mode 
+//       15 character character 
+//[1] 24
+//   Length     Class      Mode 
+//   286181 character character 
+//[1] 25
+//   Length     Class      Mode 
+//      105 character character 
+//[1] 26
+//   Length     Class      Mode 
+//   142572 character character 

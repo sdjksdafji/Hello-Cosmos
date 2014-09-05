@@ -7,14 +7,21 @@ using ScopeRuntime;
 public class DisplayAdDataExtractor : Extractor {
 
     public override Schema Produces(string[] columns, string[] args) {
-        string s = "age:int, workclass:string, fnlwgt:int, education:string, educationnum:int, maritalstatus:string, occupation:string, relationship:string, race:string, sex:string, capitalgain:int, capitalloss:int, hpw:int, natcountry:string, income:string";
+        string s = "Id:long, Label:long, I1:long, I2:long, " +
+                   "I3:long, I4:long, I5:long, I6:long, I7:long, " +
+                   "I8:long, I9:long, I10:long, I11:long, I12:long, " +
+                   "I13:long, C1:string, C2:string, C3:string, C4:string, " +
+                   "C5:string, C6:string, C7:string, C8:string, C9:string, C10:string, " +
+                   "C11:string, C12:string, C13:string, C14:string, C15:string, " +
+                   "C16:string, C17:string, C18:string, C19:string, C20:string, " +
+                   "C21:string, C22:string, C23:string, C24:string, C25:string, C26:string";
         return new Schema(s);
     }
 
 
     public override IEnumerable<Row> Extract(StreamReader reader, Row output, string[] args)
     {
-        string[] mean = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; // mean[i] is the mean of L[i]
+        string[] mean = new[] { "", "4", "106", "27", "7", "18539", "116", "16", "13", "106", "1", "3", "1", "8" }; // mean[i] is the mean of I[i]
         string line;
         while ((line = reader.ReadLine()) != null) {
             if (false == string.IsNullOrEmpty(line) && false == line.Contains("?") && false == line.Contains("Id")) {

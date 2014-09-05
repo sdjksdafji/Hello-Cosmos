@@ -3,35 +3,60 @@
  
 input = 
 EXTRACT *
-FROM @"local/shuywang/adult.txt"
-USING CensusDataExtractor();
+FROM @"local/shuywang/test/train.csv"
+USING DisplayAdDataExtractor();
  
 data = 
-    SELECT (input.income == "<=50K" ? "-1.0" : "1.0") AS Label,
-           input.age,
-           input.capitalgain,
-           input.capitalloss,
-           input.education,
-           input.educationnum,
-           input.fnlwgt,
-           input.hpw,
-           input.maritalstatus,
-           input.natcountry,
-           input.occupation,
-           input.race,
-           input.relationship,
-           input.sex,
-           input.workclass
+    SELECT (input.Label == 1 ? "1.0" : "-1.0") AS Label,
+            input.I1,
+            input.I2,
+            input.I3,
+            input.I4,
+            input.I5,
+            input.I6,
+            input.I7,
+            input.I8,
+            input.I9,
+            input.I10,
+            input.I11,
+            input.I12,
+            input.I13,
+            input.C1,
+            input.C2,
+//            input.C3,
+//            input.C4,
+            input.C5,
+            input.C6,
+            input.C7,
+            input.C8,
+            input.C9,
+            input.C10,
+            input.C11,
+//            input.C12,
+            input.C13,
+            input.C14,
+            input.C15,
+//            input.C16,
+            input.C17,
+            input.C18,
+            input.C19,
+            input.C20,
+//            input.C21,
+            input.C22,
+            input.C23,
+//            input.C24,
+            input.C25//,
+//            input.C26
     FROM input;
  
 q = ScopeML.Intermediate2Binary_General(ColumnBasedData = data);
 
 //The three files that consitute BinaryML
 OUTPUT q.Data 
-TO SSTREAM "local/shuywang/temp/training.ss";
+TO SSTREAM "local/shuywang/test/training.ss";
  
 OUTPUT q.Mapping 
-TO SSTREAM "local/shuywang/temp/map.ss";
+TO SSTREAM "local/shuywang/test/map.ss";
  
 OUTPUT q.Stat 
-TO @"local/shuywang/temp/data.stat";
+TO @"local/shuywang/test/data.stat";
