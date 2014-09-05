@@ -26,7 +26,11 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Script Include="Imputation.script" />
     <Script Include="TransformToBinaryML.script" />
+    <ScriptCode Include="Imputation.script.cs">
+      <DependentUpon>Imputation.script</DependentUpon>
+    </ScriptCode>
     <ScriptCode Include="TransformToBinaryML.script.cs">
       <DependentUpon>TransformToBinaryML.script</DependentUpon>
     </ScriptCode>

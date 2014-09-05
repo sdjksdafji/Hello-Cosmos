@@ -1,2 +1,37 @@
-﻿//Script GUID:636f61da-55d0-4bf4-af75-faa7ed06725a
-//Used for tracking history
+﻿MODULE Scope.App.ScopeML;
+
+ 
+input = 
+EXTRACT *
+FROM @"local/shuywang/adult.txt"
+USING CensusDataExtractor();
+ 
+data = 
+    SELECT (input.income == "<=50K" ? "-1.0" : "1.0") AS Label,
+           input.age,
+           input.capitalgain,
+           input.capitalloss,
+           input.education,
+           input.educationnum,
+           input.fnlwgt,
+           input.hpw,
+           input.maritalstatus,
+           input.natcountry,
+           input.occupation,
+           input.race,
+           input.relationship,
+           input.sex,
+           input.workclass
+    FROM input;
+ 
+q = ScopeML.Intermediate2Binary_General(ColumnBasedData = data);
+
+//The three files that consitute BinaryML
+OUTPUT q.Data 
+TO SSTREAM "local/shuywang/temp/training.ss";
+ 
+OUTPUT q.Mapping 
+TO SSTREAM "local/shuywang/temp/map.ss";
+ 
+OUTPUT q.Stat 
+TO @"local/shuywang/temp/data.stat";
