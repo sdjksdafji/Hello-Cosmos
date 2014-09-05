@@ -1,0 +1,37 @@
+﻿MODULE Scope.App.ScopeML;
+
+ 
+input = 
+EXTRACT *
+FROM @"local/shuywang/test/train.csv"
+USING StringExtractor();
+
+// R output
+//> for(i in 3:15){
+//+ 	I1 = training[,i];
+//+ 	print(mean(I1[is.na(I1)==FALSE]));
+//+ }
+//[1] 3.502413
+//[1] 105.8484
+//[1] 26.91304
+//[1] 7.32268
+//[1] 18538.99
+//[1] 116.0619
+//[1] 16.33313
+//[1] 12.51704
+//[1] 106.1098
+//[1] 0.6175295
+//[1] 2.732834
+//[1] 0.9910356
+//[1] 8.217461
+ 
+dataI1 = 
+    SELECT input.I1
+    FROM input
+    WHERE input.I1 != "";
+
+avgI1 = 
+    SELECT (Convert.ToInt64(dataI1.I1)) AS I1_AVG
+    FROM dataI1;
+
+OUTPUT avgI1 TO @"local/shuywang/test/imputation.txt";
