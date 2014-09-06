@@ -1,0 +1,35 @@
+﻿MODULE Scope.App.ScopeML;
+  
+#DECLARE training string = @"local/shuywang/test/training.ss";
+#DECLARE mapping string =  @"local/shuywang/test/map.ss";
+#DECLARE stat string = @"local/shuywang/test/data.stat";
+#DECLARE metricsPath string = @"local/shuywang/test/outputRF.txt";
+ 
+Input = SSTREAM @training; 
+Mapping = SSTREAM @mapping;
+ 
+//Split the data into two partitions: training data and testing data.
+ 
+p = ScopeML.SplitDataTo2Partitions(Data = Input, SplitPercentage = "80|20"); 
+
+model = ScopeML.RandomForestTraining(
+                    Mapping = Mapping,
+                    Data = p.First,
+                    Stat = @stat,
+                    TreeNum = 100,
+                    LevelNumPerTree = 8,
+                    LeftRightBalanceFactor = 0.0,
+                    MinDataNumInLeaf = 10,
+                    SampleRateForOneTree = 0.2,
+                    WithHint = false,
+                    ParNum = 100);
+
+                    //TreeType = 1
+
+
+//predict values against test data and obtain metrics  
+Predict = ScopeML.RandomForestPrediction(TestingData = p.Second, Forest =model.ForestModel); 
+ 
+Metrics = ScopeML.CalculateBinaryClassificationMetric(PredictionResults = Predict.PredictionResults);
+ 
+OUTPUT Metrics.Metrics TO @metricsPath;
