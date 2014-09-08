@@ -4,6 +4,7 @@
 #DECLARE mapping string =  @"local/shuywang/test/map.ss";
 #DECLARE stat string = @"local/shuywang/test/data.stat";
 #DECLARE metricsPath string = @"local/shuywang/test/outputRF.txt";
+#DECLARE modelPath string = @"local/shuywang/test/Forest.model";
  
 Input = SSTREAM @training; 
 Mapping = SSTREAM @mapping;
@@ -32,4 +33,6 @@ Predict = ScopeML.RandomForestPrediction(TestingData = p.Second, Forest =model.F
  
 Metrics = ScopeML.CalculateBinaryClassificationMetric(PredictionResults = Predict.PredictionResults);
  
+OUTPUT model.ForestModel TO @modelPath;
+
 OUTPUT Metrics.Metrics TO @metricsPath;
