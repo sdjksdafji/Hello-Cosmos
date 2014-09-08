@@ -1,9 +1,9 @@
 ﻿MODULE Scope.App.ScopeML;
 
 #DECLARE raw string = @"local/shuywang/test/train.csv";
-#DECLARE data string = @"local/shuywang/test/training.ss";
-#DECLARE mapping string =  @"local/shuywang/test/map.ss";
-#DECLARE stat string = @"local/shuywang/test/data.stat";
+#DECLARE data string = @"local/shuywang/test/training/data.ss";
+#DECLARE mapping string =  @"local/shuywang/test/training/map.ss";
+#DECLARE stat string = @"local/shuywang/test/training/data.stat";
 
  
 input = 
@@ -12,7 +12,7 @@ FROM @raw
 USING DisplayAdDataExtractor();
  
 data = 
-    SELECT (input.Label == 1 ? "1.0" : "-1.0") AS Label,
+    SELECT  input.Label AS Label,
             input.I1,
             input.I2,
             input.I3,

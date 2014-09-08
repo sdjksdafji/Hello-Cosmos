@@ -19,14 +19,13 @@ model = ScopeML.RandomForestTraining(
                     Stat = @stat,
                     TreeNum = 100,
                     LevelNumPerTree = 8,
-                    LeftRightBalanceFactor = 0.0,
+                    LeftRightBalanceFactor = 0.1,
                     MinDataNumInLeaf = 10,
                     SampleRateForOneTree = 0.2,
                     WithHint = false,
-                    ParNum = 100,
-                    Treetype = 1);
+                    ParNum = 100);
 
-                    //TreeType = 1
+                    //Treetype = 1
 
 
 //predict values against test data and obtain metrics  
