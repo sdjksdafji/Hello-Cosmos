@@ -1,7 +1,7 @@
 ﻿MODULE Scope.App.ScopeML;
 
 #DECLARE raw string = @"local/shuywang/test/train.csv";
-#DECLARE training string = @"local/shuywang/test/training.ss";
+#DECLARE data string = @"local/shuywang/test/training.ss";
 #DECLARE mapping string =  @"local/shuywang/test/map.ss";
 #DECLARE stat string = @"local/shuywang/test/data.stat";
 
@@ -58,7 +58,7 @@ q = ScopeML.Intermediate2Binary_General(ColumnBasedData = data);
 
 //The three files that consitute BinaryML
 OUTPUT q.Data 
-TO SSTREAM @training;
+TO SSTREAM @data;
  
 OUTPUT q.Mapping 
 TO SSTREAM @mapping;

@@ -29,7 +29,8 @@
     <Script Include="Imputation.script" />
     <Script Include="LinearRegression.script" />
     <Script Include="RandomForest.script" />
-    <Script Include="TransformToBinaryML.script" />
+    <Script Include="TestingDataToBinaryML.script" />
+    <Script Include="TrainingDataToBinaryML.script" />
     <ScriptCode Include="Imputation.script.cs">
       <DependentUpon>Imputation.script</DependentUpon>
     </ScriptCode>
@@ -39,8 +40,11 @@
     <ScriptCode Include="RandomForest.script.cs">
       <DependentUpon>RandomForest.script</DependentUpon>
     </ScriptCode>
-    <ScriptCode Include="TransformToBinaryML.script.cs">
-      <DependentUpon>TransformToBinaryML.script</DependentUpon>
+    <ScriptCode Include="TestingDataToBinaryML.script.cs">
+      <DependentUpon>TestingDataToBinaryML.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="TrainingDataToBinaryML.script.cs">
+      <DependentUpon>TrainingDataToBinaryML.script</DependentUpon>
     </ScriptCode>
   </ItemGroup>
   <Import Project="$(AppData)\Microsoft\ScopeStudio\MsBuild\1.0\Scope.targets" />
