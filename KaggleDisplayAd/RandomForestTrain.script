@@ -23,7 +23,8 @@ model = ScopeML.RandomForestTraining(
                     MinDataNumInLeaf = 10,
                     SampleRateForOneTree = 0.2,
                     WithHint = false,
-                    ParNum = 100);
+                    ParNum = 100,
+                    Treetype = 1);
 
                     //TreeType = 1
 
