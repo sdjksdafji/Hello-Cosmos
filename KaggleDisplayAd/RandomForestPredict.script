@@ -1,0 +1,14 @@
+﻿MODULE Scope.App.ScopeML;
+  
+#DECLARE testing string = @"local/shuywang/test/testing/data.ss";
+#DECLARE modelPath string = @"local/shuywang/test/Forest.model";
+#DECLARE result string = @"local/shuywang/test/testing/result.csv";
+
+TestingData = SSTREAM @testing; 
+
+Forest = EXTRACT TreeId:string, Tree:binary
+         FROM @modelPath USING DefaultTextExtractor();
+
+Predict = ScopeML.RandomForestPrediction(TestingData = TestingData, Forest = Forest); 
+
+OUTPUT Predict.PredictionResults TO @result;

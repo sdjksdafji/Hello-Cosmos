@@ -7,7 +7,7 @@ using ScopeRuntime;
 public class DisplayAdDataTestingExtractor : Extractor {
 
     public override Schema Produces(string[] columns, string[] args) {
-        string s = "Id:long, I1:long, I2:long, " +
+        string s = "Id:string, I1:long, I2:long, " +
                    "I3:long, I4:long, I5:long, I6:long, I7:long, " +
                    "I8:long, I9:long, I10:long, I11:long, I12:long, " +
                    "I13:long, C1:string, C2:string, C3:string, C4:string, " +

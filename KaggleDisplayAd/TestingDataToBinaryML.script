@@ -12,7 +12,7 @@ FROM @raw
 USING DisplayAdDataTestingExtractor();
  
 data = 
-    SELECT  "0" AS Label,
+    SELECT  "0.0:1.0:" + input.Id AS Label,
             input.I1,
             input.I2,
             input.I3,
