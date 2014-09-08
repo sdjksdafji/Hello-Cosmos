@@ -28,8 +28,8 @@ public class DisplayAdDataTestingExtractor : Extractor {
 
                 for (int i = 0; i < tokens.Length; ++i) {
                     if (string.IsNullOrEmpty(tokens[i])) {
-                        if (i >= 2 && i <= 14) {
-                            output[i].Set(mean[i - 1].Trim());
+                        if (i >= 1 && i <= 13) {
+                            output[i].Set(mean[i].Trim());
                         } else {
                             output[i].Set("NA".Trim());
                         }
