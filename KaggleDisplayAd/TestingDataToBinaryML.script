@@ -2,8 +2,7 @@
 
 #DECLARE raw string = @"local/shuywang/test/test.csv";
 #DECLARE data string = @"local/shuywang/test/testing/data.ss";
-#DECLARE mapping string =  @"local/shuywang/test/testing/map.ss";
-#DECLARE stat string = @"local/shuywang/test/testing/data.stat";
+#DECLARE mapping string =  @"local/shuywang/test/training/map.ss";
 
  
 input = 
@@ -53,15 +52,13 @@ data =
             input.C25//,
 //            input.C26
     FROM input;
- 
-q = ScopeML.Intermediate2Binary_General(ColumnBasedData = data);
+
+Mapping = SSTREAM @mapping;
+
+
+q = ScopeML.ApplyIntermediate2Binary_General(ColumnBasedData = data, FeatureType=0, WithBias = true, Mapping = Mapping);
 
 //The three files that consitute BinaryML
 OUTPUT q.Data 
 TO SSTREAM @data;
  
-OUTPUT q.Mapping 
-TO SSTREAM @mapping;
- 
-OUTPUT q.Stat 
-TO @stat;
