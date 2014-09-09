@@ -1,8 +1,8 @@
 ﻿MODULE Scope.App.ScopeML;
   
-#DECLARE training string = @"local/shuywang/test/training.ss";
-#DECLARE mapping string =  @"local/shuywang/test/map.ss";
-#DECLARE stat string = @"local/shuywang/test/data.stat";
+#DECLARE training string = @"local/shuywang/test/training/data.ss";
+#DECLARE mapping string =  @"local/shuywang/test/training/map.ss";
+#DECLARE stat string = @"local/shuywang/test/training/data.stat";
 #DECLARE metricsPath string = @"local/shuywang/test/outputRF.txt";
 #DECLARE modelPath string = @"local/shuywang/test/Forest.model";
  
