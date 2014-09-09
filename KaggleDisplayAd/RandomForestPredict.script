@@ -1,6 +1,6 @@
 ﻿MODULE Scope.App.ScopeML;
   
-#DECLARE testing string = @"local/shuywang/test/training/data.ss";
+#DECLARE testing string = @"local/shuywang/test/testing/data.ss";
 #DECLARE modelPath string = @"local/shuywang/test/Forest.model";
 #DECLARE result string = @"local/shuywang/test/testing/result.ss";
 #DECLARE submit string = @"local/shuywang/test/testing/submit.ss";
@@ -12,8 +12,7 @@ Forest = EXTRACT TreeId:string, Tree:binary
 
 Predict = ScopeML.RandomForestPrediction(TestingData = TestingData, Forest = Forest); 
 
-Submission = SELECT Tag AS Id, 
-                    (Convert.ToDouble(Prediction) > 0.5 ? "1.0" : "0.0") AS Predicted
+Submission = SELECT Convert.ToInt64(Tag) AS Id, Prediction AS Predicted
              FROM  Predict.PredictionResults;
 
 OUTPUT Predict.PredictionResults TO SSTREAM @result;

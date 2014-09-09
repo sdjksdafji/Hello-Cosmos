@@ -4,6 +4,7 @@
 #DECLARE mapping string =  @"local/shuywang/test/training/map.ss";
 #DECLARE stat string = @"local/shuywang/test/training/data.stat";
 #DECLARE metricsPath string = @"local/shuywang/test/outputLR.txt";
+#DECLARE modelPath string = @"local/shuywang/test/LogReg.model.ss";
  
 Input = SSTREAM @training; 
 Mapping = SSTREAM @mapping;
@@ -24,5 +25,8 @@ model = ScopeML.LinearModel(Data = p.First,
 Predict = ScopeML.LinearModelPrediction(TestingData = p.Second, LinearModel = model.Model, Algo = "lr");
  
 Metrics = ScopeML.CalculateBinaryClassificationMetric(PredictionResults = Predict.PredictionResults);
+
+
+OUTPUT model.Model TO SSTREAM @modelPath;
  
 OUTPUT Metrics.Metrics TO @metricsPath;

@@ -8,7 +8,7 @@
     <AssemblyName>Algebra.xml</AssemblyName>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Name>KaggleDisplayAd</Name>
+    <Name>WacCosmosLearning</Name>
     <RootNamespace>KaggleDisplayAd</RootNamespace>
     <VCSelectionInProjectProperty>&lt;Use Current VC in VC Selector&gt;</VCSelectionInProjectProperty>
     <CosmosRuntimeVersion>Default</CosmosRuntimeVersion>
