@@ -27,6 +27,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Script Include="Imputation.script" />
+    <Script Include="LinearModelPredict.script" />
     <Script Include="LinearRegressionTrain.script" />
     <Script Include="RandomForestTrain.script" />
     <Script Include="RandomForestPredict.script" />
@@ -34,6 +35,9 @@
     <Script Include="TrainingDataToBinaryML.script" />
     <ScriptCode Include="Imputation.script.cs">
       <DependentUpon>Imputation.script</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="LinearModelPredict.script.cs">
+      <DependentUpon>LinearModelPredict.script</DependentUpon>
     </ScriptCode>
     <ScriptCode Include="LinearRegressionTrain.script.cs">
       <DependentUpon>LinearRegressionTrain.script</DependentUpon>
