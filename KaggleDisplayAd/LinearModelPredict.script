@@ -1,0 +1,18 @@
+﻿MODULE Scope.App.ScopeML;
+  
+#DECLARE testing string = @"local/shuywang/test/testing/data.ss";
+#DECLARE modelPath string = @"local/shuywang/test/LogReg.model.ss";
+#DECLARE result string = @"local/shuywang/test/testing/result.ss";
+#DECLARE submit string = @"local/shuywang/test/testing/submit.ss";
+
+TestingData = SSTREAM @testing;
+
+Model = SSTREAM @modelPath;
+
+Predict = ScopeML.LinearModelPrediction(TestingData = TestingData, LinearModel = Model, Algo = "lr", WithHint = false);
+
+Submission = SELECT Tag AS Id, Probability AS Predicted
+             FROM  Predict.PredictionResults;
+
+OUTPUT Predict.PredictionResults TO SSTREAM @result;
+OUTPUT Submission TO SSTREAM @submit;

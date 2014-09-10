@@ -28,8 +28,8 @@ data =
             input.I13,
             input.C1,
             input.C2,
-//            input.C3,
-//            input.C4,
+            input.C3,
+            input.C4,
             input.C5,
             input.C6,
             input.C7,
@@ -37,21 +37,21 @@ data =
             input.C9,
             input.C10,
             input.C11,
-//            input.C12,
+            input.C12,
             input.C13,
             input.C14,
             input.C15,
-//            input.C16,
+            input.C16,
             input.C17,
             input.C18,
             input.C19,
             input.C20,
-//            input.C21,
+            input.C21,
             input.C22,
             input.C23,
-//            input.C24,
-            input.C25//,
-//            input.C26
+            input.C24,
+            input.C25,
+            input.C26
     FROM input;
  
 q = ScopeML.Intermediate2Binary_General(ColumnBasedData = data);

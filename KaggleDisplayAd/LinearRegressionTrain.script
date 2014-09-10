@@ -16,7 +16,7 @@ p = ScopeML.SplitDataTo2Partitions(Data = Input, SplitPercentage = "80|20");
 model = ScopeML.LinearModel(Data = p.First,
                         Mapping = Mapping,
                         Stat = @stat,
-                        LearningParameter = "M=10;CL1=0;CL2=1",
+                        LearningParameter = "M=100;CL1=0;CL2=2",
                         WithHint = false,
                         Algo = "lr");
 
